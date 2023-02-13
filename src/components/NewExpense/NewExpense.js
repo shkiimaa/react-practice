@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ExpenseForm from './ExpenseForm';
 import './NewExpense.css';
 
 const NewExpense = ({ onAddExpense }) => {
+  const [formControl, setformControl] = useState(false);
+
+  const formControlHandler = (e) => {
+    setformControl((prevState) => !prevState);
+  };
+
   const saveExpenseDataHander = (enteredExpenseData) => {
     console.log(enteredExpenseData);
     const expenseData = { ...enteredExpenseData, date: new Date(enteredExpenseData.date), id: Math.random().toString() };
@@ -11,7 +17,8 @@ const NewExpense = ({ onAddExpense }) => {
 
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpenseDataHander} />
+      {!formControl && <button onClick={formControlHandler}>Add New Expense</button>}
+      {formControl && <ExpenseForm onSaveExpenseData={saveExpenseDataHander} onFormControl={formControlHandler} />}
     </div>
   );
 };

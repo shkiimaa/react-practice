@@ -21,9 +21,13 @@ const Expenses = (props) => {
         return <ExpenseItem key={data.id} title={data.title} amount={data.amount} date={data.date} />;
       });
     } else {
-      return itemsFilter.map((data) => {
-        return <ExpenseItem key={data.id} title={data.title} amount={data.amount} date={data.date} />;
-      });
+      if (itemsFilter.length === 0) {
+        return <div>No Data</div>;
+      } else {
+        return itemsFilter.map((data) => {
+          return <ExpenseItem key={data.id} title={data.title} amount={data.amount} date={data.date} />;
+        });
+      }
     }
   };
 
