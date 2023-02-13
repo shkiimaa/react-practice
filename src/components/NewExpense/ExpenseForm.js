@@ -17,11 +17,11 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
 
     setUserInput((prevState) => {
       let newState;
-      if (name === 'date') {
-        newState = { ...prevState, [name]: new Date(value) };
-      } else {
-        newState = { ...prevState, [name]: value };
-      }
+      // if (name === 'date') {
+      //   newState = { ...prevState, [name]: new Date(value) };
+      // } else {
+      newState = { ...prevState, [name]: value };
+      // }
       return newState;
     });
   };

@@ -4,7 +4,8 @@ import './NewExpense.css';
 
 const NewExpense = ({ onAddExpense }) => {
   const saveExpenseDataHander = (enteredExpenseData) => {
-    const expenseData = { ...enteredExpenseData, id: Math.random().toString() };
+    console.log(enteredExpenseData);
+    const expenseData = { ...enteredExpenseData, date: new Date(enteredExpenseData.date), id: Math.random().toString() };
     onAddExpense(expenseData);
   };
 
